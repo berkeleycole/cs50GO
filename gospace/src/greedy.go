@@ -21,15 +21,16 @@ func main() {
 		fmt.Println("Try Again:")
 		fmt.Scan(&change)
 	}
-	//multiply the float by 100 and truncate(setting $ amounts to cents)
+	//multiply the float by 100 for cent amount
 	change = change*100
+	//print value, just as a check for unusual float values
 	fmt.Printf("That is %.0f cents!\n", change)
-	
+	//round the float up and convert to int for use in loop
 	var cents int = int(change+.05)
-	fmt.Println("That is ", cents)
+	
 	//set coin counter variable
 	coins := 0
-	//loop breaks the input into 25's, 10's, 5's and 1's and count coints
+	//loop breaks the input into 25's, 10's, 5's and 1's and counts coins
 	for cents >= 25 {
 		coins++
 		cents -= 25
