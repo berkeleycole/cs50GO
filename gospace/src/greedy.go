@@ -24,15 +24,28 @@ func main() {
 	//multiply the float by 100 and truncate(setting $ amounts to cents)
 	change = change*100
 	fmt.Printf("That is %.0f cents!\n", change)
-	//loop will break the input into 25's, 10's, 5's and 1's
-		//if i > 25
-			//subtract total by 25 and increase coin count by one
-		//if i < 25 && i > 10
-			//subtract total by 10 and increase coin count by one
-		//if i < 10 && i > 5
-			//subtract total by 5 and increase coin count by one
-		//if i < 5 && i > 1
-			//subtract total by 1 and increase coin count by one
-			
-	//Print number of coins used to dispense the designated amount of change
+	
+	var cents int = int(change+.05)
+	fmt.Println("That is ", cents)
+	//set coin counter variable
+	coins := 0
+	//loop breaks the input into 25's, 10's, 5's and 1's and count coints
+	for cents >= 25 {
+		coins++
+		cents -= 25
+	}
+	for cents < 25 && cents >= 10 {
+		coins++
+		cents -= 10
+	}
+	for cents < 10 && cents >= 5 {
+		coins++
+		cents -= 5
+	}
+	for cents < 5 && cents >= 1 {
+		coins++
+		cents -= 1
+	}
+	//Print number of coins used 
+	fmt.Println("Coins", coins)
 }
