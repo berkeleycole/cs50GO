@@ -1,4 +1,4 @@
-##Assignment 4: Caesar Cypher
+##Assignment 4: The Caesar Cypher
 
 To be honest, the amount of jumping between data types in this assignment had me just about pulling my hair out...and more so in Go than in C. But, once you get the hang of it, it really isn't completely aweful, just annoying. 
 
