@@ -15,18 +15,14 @@ var (
 func keySetter(s string, i int) byte {
 
 	s = strings.ToUpper(s) //easier if key is all in same case
-
 	key := byte(s[i])
-
 	return key - 65
-
 }
 
 func main() {
 
 	// 1. GET USER INPUT FROM CLI (this is a string in os.Args[1])
 
-	//set key phrase
 	keyWord := os.Args[1]
 
 	// 2. SET KEY INDEX
