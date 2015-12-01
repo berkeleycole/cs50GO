@@ -17,6 +17,7 @@ func cleanString(a string) bool {
 }
 
 func main() {
+
 	//get full name
 	fullName := bufio.NewReader(os.Stdin)
 	fmt.Print("Your full name, please: ")
