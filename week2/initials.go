@@ -2,10 +2,13 @@ package main
 
 import (
 	"bufio"
+	"errors"
 	"fmt"
-	"github.com/berkeleycole/initials"
 	"os"
+	"strings"
 )
+
+var HasNumErr = errors.New("You cannot have numbers in your name.")
 
 func main() {
 	//get full name
@@ -17,13 +20,37 @@ func main() {
 		os.Exit(1)
 	}
 
-	initials, err := initials.GetInitials(text)
+	initials, err := GetInitials(text)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
 
 	fmt.Println("Your Initials:", initials)
+}
+
+func GetInitials(name string) (string, error) {
+	if strings.IndexAny(name, "1234567890") >= 0 {
+		return "", HasNumErr
+	}
+
+	//name to all caps
+	caps := strings.ToUpper(name)
+
+	var initials []string
+
+	initials = append(initials, string(caps[0]))
+
+	//loop through all chars
+	for i := range name {
+		if caps[i] == 32 {
+			initials = append(initials, string(caps[i+1]))
+		}
+	}
+
+	ret := strings.Join(initials, "")
+
+	return ret, nil
 }
 
 //still need to: 1) give error for numbers in name (not actually required per the assignment)
