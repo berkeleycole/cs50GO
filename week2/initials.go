@@ -8,49 +8,45 @@ import (
 	"strings"
 )
 
-var HasNumErr = errors.New("You cannot have numbers in your name.")
+var (
+	HasNumErr = errors.New("You cannot have numbers in your name.")
+)
+
+func cleanString(a string) bool {
+	return strings.ContainsRune(a)
+}
 
 func main() {
 	//get full name
 	fullName := bufio.NewReader(os.Stdin)
 	fmt.Print("Your full name, please: ")
-	text, err := fullName.ReadString('\n')
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
+	text, _ := fullName.ReadString('\n')
 
-	initials, err := GetInitials(text)
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
-
-	fmt.Println("Your Initials:", initials)
-}
-
-func GetInitials(name string) (string, error) {
-	if strings.IndexAny(name, "1234567890") >= 0 {
-		return "", HasNumErr
+	if cleanString(text) == true {
+		fmt.Println(HasNumErr)
 	}
 
 	//name to all caps
-	caps := strings.ToUpper(name)
+	var name string = strings.ToUpper(text)
 
-	var initials []string
+	initials := make([]string, len(name))
 
-	initials = append(initials, string(caps[0]))
+	//print first initial
+	fmt.Printf("%c", name[0])
 
 	//loop through all chars
-	for i := range name {
-		if caps[i] == 32 {
-			initials = append(initials, string(caps[i+1]))
+	i := 0
+
+	for i < len(name) {
+		if name[i] == 32 { //find spaces
+			i++
+			fmt.Printf("%c", name[i]) //take the char after the space as a new initial
+		} else {
+			i++ //otherwise, skip past
 		}
 	}
 
-	ret := strings.Join(initials, "")
-
-	return ret, nil
+	fmt.Printf("\n") //extra space for readability
 }
 
 //still need to: 1) give error for numbers in name (not actually required per the assignment)
