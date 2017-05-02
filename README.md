@@ -6,7 +6,7 @@ Mirror to Harvard's CS50 course, with Go instead of C. A project just for my own
 * Most developers keep everything Go in one folder, and the Go folder is called a workspace, so make your go folder(mine is called gospace)
 * Inside your workspace, the common organization is to have three folders. First, a bin folder for your executables, make a bin folder
 * Second, a pkg folder will hold all your Go packages. Make a pkg folder
-* And last, there will be a src folder for the files your write. Create a src folder
+* And last, there will be a src folder for the files you write. Create a src folder
 * Now that you have three folders, make a simple file in your src folder (like "hello.go") and put a very simple program in it (or copy my hello.go)
 * In your terminal run: 
 	go run hello.go (or whatever you named your file)
